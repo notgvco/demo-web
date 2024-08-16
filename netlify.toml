@@ -1,0 +1,7 @@
+[build]
+  publish = "public"  # Thay đổi nếu thư mục publish của bạn khác
+
+[[redirects]]
+  from = "/"
+  to = "/enter.html"
+  status = 200

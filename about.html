@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const title = "djawidjawjfisakdkw ajdiwajfasdkwfgajd awei3tjfjadiwa 133qradajjiwtfd bandabihack hehe";
+            const words = title.split(" ");
+            let index = 0;
+
+            function changeTitle() {
+                document.title = words[index];
+                index = (index + 1) % words.length;
+                setTimeout(changeTitle, 1000); // Đổi từ sau mỗi 1000ms
+            }
+
+            changeTitle();
+        });
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Style Credits</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00FF00;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        #terminal {
+            width: 100%;
+            border: none;
+            background-color: black;
+            color: #00FF00;
+            font-size: 1.2em;
+            outline: none;
+            caret-color: #00FF00;
+        }
+        
+        .credits-content,
+        .about-content,
+        .music,
+        .credit-content {
+            display: none;
+        }
+        
+        a {
+            color: #00FF00;
+            /* Màu mặc định của liên kết */
+            text-decoration: none;
+            /* Loại bỏ gạch chân */
+        }
+        
+        a:hover {
+            color: #0400ff;
+            /* Màu khi di chuột qua liên kết */
+        }
+        
+        a:active {
+            color: #0000FF;
+            /* Màu khi nhấn vào liên kết */
+        }
+        
+        .terminal-output {
+            white-space: pre-wrap;
+            overflow-y: auto;
+            left: 100%;
+            height: calc(100vh - 80px);
+            /* Adjust height as needed */
+            padding-right: 20px;
+            /* For scrollbar */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="terminal-output" id="terminal-output">
+        <span id="text-output"></span><span class="cursor"></span>
+    </div>
+    <input type="text" id="terminal" placeholder="Type your command . . .">
+
+    <div class="music">
+        <strong> All Are Instrumental</strong>
+        <br>
+        <a href="https://www.youtube.com/watch?v=N63ugtRYLm4" class="link"><strong>Carnival</strong>&nbsp;- Kanye West</a>
+        <a href="https://www.youtube.com/watch?v=OJm4CzFqaeE" class="link"><strong>Dropped Out</strong>&nbsp;- PlayBoi Carti</a>
+        <a href="https://www.youtube.com/watch?v=SyxH0y4Vhhc" class="link"><strong>Glock In My L4p</strong>&nbsp;- 21 Savage & Metro Boomin</a>
+        <a href="https://www.youtube.com/watch?v=Ua3YiiWHKvc" class="link"><strong>I Don't Like</strong>&nbsp;- Chief Keef</a>
+        <a href="https://www.youtube.com/watch?v=bE0wkorzLgY" class="link"><strong>i need u</strong>&nbsp;- Ken Carson</a>
+        <a href="https://www.youtube.com/watch?v=9aGXxosNf2M" class="link"><strong>Jimmy Cooks</strong>&nbsp;- Drake ft. 21 Savage</a>
+        <a href="https://www.youtube.com/watch?v=ir-x6WGEdpc" class="link"><strong>King Vamp! v3</strong>&nbsp;- LL Clawz</a>
+        <a href="https://www.youtube.com/watch?v=0M67Jy5F6RM" class="link"><strong>Magnolia</strong>&nbsp;- Playboi Carti</a>
+        <a href="https://www.youtube.com/watch?v=9EvCQZ8Wyds" class="link"><strong>Nuketown</strong>&nbsp;- Ski Mask the Slump God</a>
+        <a href="https://www.youtube.com/watch?v=WAhQlp6OCeM" class="link"><strong>Out The Way</strong>&nbsp;- Yeat</a>
+        <a href="https://www.youtube.com/watch?v=rd7Q_vZErxk" class="link"><strong>overseas</strong>&nbsp;- Ken Carson</a>
+        <a href="https://www.youtube.com/watch?v=z68TX6cyS6w" class="link"><strong>Red Sun In The Sky (phonk remix)</strong>&nbsp;- Atrael</a>
+        <a href="https://www.youtube.com/watch?v=hWHJ77K5Ies" class="link"><strong>Save That Sh1t</strong>&nbsp;- Lil Peep</a>
+        <a href="https://www.youtube.com/watch?v=Ej1L7I3VPa4" class="link"><strong>SKELETONS</strong>&nbsp;- Travis Scott</a>
+        <a href="https://www.youtube.com/watch?v=yy4v_td38No" class="link"><strong>Fourth Gear Cypher</strong>&nbsp;- SLAYER77</a>
+        <a href="https://www.youtube.com/watch?v=Efk9dSRyJv4" class="link"><strong>Rackz got me</strong>&nbsp;- Yeat & Gunna</a>
+        <a href="https://www.youtube.com/watch?v=fdrbdoOt9bA" class="link"><strong>Shibuya</strong>&nbsp;- Ski Mask The Slump God</a>
+        <a href="https://www.youtube.com/watch?v=-s6S6DxRclU" class="link"><strong>Nun id change</strong>&nbsp;- Yeat</a>
+        <a href="https://www.youtube.com/watch?v=k85mRPqvMbE" class="link"><strong>Crazy Frog</strong>&nbsp;- Axel F</a>
+        <a href="https://www.youtube.com/watch?v=2Ea2cKezLoc" class="link"><strong>Basstoven</strong>&nbsp;- Kyle Exum</a>
+        <a href="https://www.youtube.com/watch?v=TdNz0Fn-AqM" class="link"><strong>ĐÁNH ĐỔI</strong>&nbsp;- OBITO ft RPT MCK</a>
+        <a href="https://www.youtube.com/watch?v=y9vbprKPT7s" class="link"><strong>gta 4 theme (slowed)</strong>&nbsp;- qaido</a>
+        <a href="https://www.youtube.com/watch?v=0rLIWFLWt1E" class="link"><strong>Change</strong>&nbsp;- qaido</a>" class="link"><strong>gta 4 theme (slowed)</strong>&nbsp;- qaido</a>
+        <a href="https://www.youtube.com/watch?v=WWgR--Tb3i4" class="link"><strong>The Grinch</strong>&nbsp;- Trippie Redd</a>
+        <a href="https://www.youtube.com/watch?v=FmJZD4LeHrQ" class="link"><strong>Not Like Us</strong>&nbsp;- Kendrick Lamar</a>
+        <a href="https://www.youtube.com/watch?v=xLq-_ynJ0hY" class="link"><strong>Silly Watch</strong>&nbsp;- Lil Uzi Vert</a>
+    </div>
+
+    <div class="about-content">
+        <br>
+        <h4> Dự án này được làm chỉ vọn vẻn trong khoảng 3 tuần. Mong các bạn sẽ thích nó. Xin cảm ơn !</h4>
+        <a href="https://chatgpt.com/" class="link"><strong>ChatGPT</strong>&nbsp;- Công cụ hỗ trợ</a>
+        <br>
+        <a href="https://shop.travisscott.eu.com/" class="link"><strong>Travis Scott Shop</strong>&nbsp;- website tham khảo giao diện</a>
+        <br>
+        <a href="https://codepen.io/MysticReborn/pen/rygqao/" class="link"><strong>Dino Game</strong>&nbsp;- Source code game dino</a>
+        <br>
+        <a href="https://icomoon.io/app/#/select" class="link"><strong>Icon SVG</strong>&nbsp;- Nguồn của các icons</a>
+    </div>
+
+    <div class="credit-content">
+        <pre>
+                                                                                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           @@@@@@                                          @@@@@@                       
+                        @@@@@@@@                                            @@@@@@@@@                  
+                    @@@@@@@@@@                    @       @                   @@@@@@@@@@@               
+                 @@@@@@@@@@@@@                    @@     @@                   @@@@@@@@@@@@@@            
+               @@@@@@@@@@@@@@@@                  @@@@   @@@@                 @@@@@@@@@@@@@@@@@          
+              @@@@@@@@@@@@@@@@@@@                @@@@@@@@@@@               @@@@@@@@@@@@@@@@@@@@@         
+            @@@@@@@@@@@@@@@@@@@@@@@@@@          @@@@@@@@@@@@           @@@@@@@@@@@@@@@@@@@@@@@@@@@       
+          @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@     
+         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@     
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@    
+       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@   
+       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  
+       @@@           @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@              @@@   
+                        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                      
+                          @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                       
+                           @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                        
+                            @@              @@@@@@@@@@@@@@@@@@@@            @@                        
+                                              @@@@@@@@@@@@@@@@                                          
+                                                @@@@@@@@@@@@                                            
+                                                  @@@@@@@@                                              
+                                                    @@@@@                                               
+                                                     @@                                                 
+                                                                                                        
+                                                                                                        
+                                                                                                        
+                                                             </pre>
+        <br><strong><h2>Duy Nguyen</h2></strong>
+        <p>Who will you be tonight? That's the question !</p>
+        <p>----------------------------------------------</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/Duypresident/" class="social-link">Facebook</a>
+            <a href="https://www.instagram.com/notgvco/" class="social-link">Instagram</a>
+            <a href="https://steamcommunity.com/id/levihandsome/" class="social-link">Steam</a>
+            <a href="https://zalo.me/0362599285" class="social-link">Zalo</a>
+        </div>
+
+    </div>
+    </div>
+
+    <script>
+        const terminalInput = document.getElementById("terminal");
+        const terminalOutput = document.getElementById("terminal-output");
+
+        const commands = {
+            "/help": "Commands: <br> + /about - to show information about this project. <br> + /creator - about the person who created this project. <br> + /back - to back to the main page. <br> + /music - to show the songs I have used",
+            "/about": document.querySelector(".about-content").innerHTML,
+            "/creator": document.querySelector(".credit-content").innerHTML,
+            "/back": "Redirecting to the main page...",
+            "/music": document.querySelector(".music").innerHTML
+        };
+
+        terminalInput.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                const userCommand = terminalInput.value.trim();
+
+                if (userCommand === "/help") {
+                    terminalOutput.innerHTML += `<div>> ${userCommand}</div>`;
+                    terminalOutput.innerHTML += `<div>${commands[userCommand]}</div>`;
+                } else if (commands.hasOwnProperty(userCommand)) {
+                    terminalOutput.innerHTML += `<div>> ${userCommand}</div>`;
+                    if (userCommand === "/back") {
+                        window.location.href = "main.html";
+                    } else {
+                        displayContent(userCommand);
+                    }
+                } else {
+                    terminalOutput.innerHTML += `<div>> ${userCommand} - Command not found</div>`;
+                }
+                terminalInput.value = "";
+            }
+        });
+
+        function displayContent(command) {
+            const content = commands[command];
+            terminalOutput.innerHTML += `<div>${content}</div>`;
+        }
+
+
+        const textOutput = document.getElementById('text-output');
+        const text = "\nWelcome to the terminal.\nType /help for available commands.\n";
+        let index = 0;
+
+        function typeEffect() {
+            if (index < text.length) {
+                textOutput.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeEffect, 25);
+            }
+        }
+
+        typeEffect();
+    </script>
+</body>
+
+</html>

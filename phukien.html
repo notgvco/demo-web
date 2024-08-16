@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gvco</title>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const title = "Say on skibidi?";
+            const words = title.split(" ");
+            let index = 0;
+
+            function changeTitle() {
+                document.title = words[index];
+                index = (index + 1) % words.length;
+                setTimeout(changeTitle, 500); // Đổi từ sau mỗi 500ms
+            }
+
+            changeTitle();
+        });
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="icon/OIP__2_-removebg-preview.png" id="logoHead">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="icon/heartbeatbatman.gif" alt="Logo" class="Logomain">
+        </div>
+
+        <!-- Icons for user and cart -->
+        <div class="icons">
+            <img src="icon/user.svg" class="icon" id="userIcon" alt="User Icon">
+            <img src="icon/cart.svg" class="icon" id="cartIcon" alt="Cart Icon">
+        </div>
+
+        <!-- Login/Register Modal -->
+        <div id="login-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Login</h2>
+                <form id="login-form">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Login</button>
+                </form>
+                <h2>or</h2>
+                <h2>Register</h2>
+                <form id="register-form">
+                    <label for="new-username">Username:</label>
+                    <input type="text" id="new-username" name="new-username" required>
+                    <label for="new-password">Password:</label>
+                    <input type="password" id="new-password" name="new-password" required>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Cart Modal -->
+        <div id="cart-modal" class="modal-cart">
+            <div class="modal-cart-content">
+                <span class="close-cart">&times;</span>
+                <h2>Your Cart</h2>
+                <div class="cart-items">
+                    <!-- Cart items will be dynamically added here -->
+                </div>
+                <button id="checkout">Checkout</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Khu vực chính chứa sản phẩm -->
+    <div class="container">
+        <div class="product-grid">
+            <div class="product" data-id="20">
+                <div class="image-container">
+                    <a href="product.html?id=20">
+                        <img src="Store/SOCKS_01_UPDATE_1500x-510x510.webp" alt="Tat 1" class="main-image">
+                        <img src="Store/SOCKS_01_UPDATE_1500x-510x510.webp" alt="Tat 1 - Hover" class="hover-image">
+                    </a>
+                </div>
+                <p class="product-name">T-REXX SOCK PACK</p>
+                <p class="product-price"><strong>151,607 VND</strong></p>
+            </div>
+            <div class="product" data-id="21">
+                <div class="image-container">
+                    <a href="product.html?id=21">
+                        <img src="Store/BELT_01_V1_1500x-510x510.webp" alt="That lung 1" class="main-image">
+                        <img src="Store/BELT_01_V2_1500x-510x510.webp" alt="That lung 1 - Hover" class="hover-image">
+                    </a>
+                </div>
+                <p class="product-name">STUDDED BELT</p>
+                <p class="product-price">413,475 VNĐ</p>
+            </div>
+            <div class="product" data-id="22">
+                <div class="image-container">
+                    <a href="product.html?id=22">
+                        <img src="Store/SUITCASE_01_1500x-1024x1024-1-510x510.png" alt="Cap 1" class="main-image">
+                        <img src="Store/SUITCASE_01_1500x-1024x1024-1-510x510.png" alt="Cap 1 - Hover" class="hover-image">
+                    </a>
+                </div>
+                <p class="product-name">UTOPIA BRIEFCASE</p>
+                <p class="product-price">413,475 VNĐ</p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Menu</button>
+        <div class="dropdown-content">
+            <a href="main.html">Home</a>
+            <a href="vinyl.html">Vinyl disc</a>
+            <a href="about.html">About</a>
+            <a href="game.html">Game</a>
+        </div>
+    </div>
+
+    <!-- Phần biểu tượng âm thanh -->
+    <div id="soundControl" class="sound-control">
+        <img src="icon/volume-medium.svg" id="unmuteIcon" class="sound-icon" alt="Unmute Icon">
+        <img src="icon/volume-mute2.svg" id="muteIcon" class="sound-icon" alt="Mute Icon" style="display: none;">
+    </div>
+
+    <div id="enterText">
+        <img src="" id="logo3d" class="Enterlogo">
+    </div>
+    <div id="mainContent">
+        <!-- Phần hộp nhạc -->
+        <div id="musicBox" class="Musicboxicon">
+            <div id="musicPlayer">
+                <img src="icon/music.svg" id="musicIcon" alt="Music Icon">
+                <div class="track-title"> Click to play some music</div>
+                <audio id="audio">
+                    <!-- Liệt kê trực tiếp các bài hát -->
+                    <source src="music/CarnivalKanyeWest.mp3" type="audio/mp3">
+                    <source src="music/DroppedOutPlayboiCarti.mp3" type="audio/mp3">
+                    <source src="music/GlockInMyLap21SavageMetroBoomin.mp3" type="audio/mp3">
+                    <source src="music/IDontLikeChiefKeef.mp3" type="audio/mp3">
+                    <source src="music/ineeduKenCarson.mp3" type="audio/mp3">
+                    <source src="music/JimmyCooksDrakeft21Savage.mp3" type="audio/mp3">
+                    <source src="music/KingVampv3LLClawz.mp3" type="audio/mp3">
+                    <source src="music/MagnoliaInstrumentalPlayboiCarti.mp3" type="audio/mp3">
+                    <source src="music/NuketownSkiMasktheSlumpGod.mp3" type="audio/mp3">
+                    <source src="music/OutTheWayYeat.mp3" type="audio/mp3">
+                    <source src="music/OverseasKenCarson.mp3" type="audio/mp3">
+                    <source src="music/RedSunInTheSkyPhonkRemix.mp3" type="audio/mp3">
+                    <source src="music/SaveThatShitLilPeep.mp3" type="audio/mp3">
+                    <source src="music/SKELETONSTravisScott.mp3" type="audio/mp3">
+                    <source src="music/FourthGearCypherSLAYER77.mp3" type="audio/mp3">
+                    <source src="music/RackzgotmeYeat.mp3" type="audio/mp3">
+                    <source src="music/SkiMaskTheSlumpGodShibuya.mp3" type="audio/mp3">
+                    <source src="music/YeatNunidchange.mp3" type="audio/mp3">
+                    <source src="music/CrazyFrogAxelF.mp3" type="audio/mp3">
+                    <source src="music/KyleExumBasstovenInstrumental.mp3" type="audio/mp3">
+                    <source src="music/INSTRUMENTALDANHDOIOBITOFTMCK.mp3" type="audio/mp3">
+                    <source src="music/GTAIVTHEME.mp3" type="audio/mp3">
+                    <source src="music/SepheChange.mp3" type="audio/mp3">
+                    <source src="music/YeatSplitInstrumental.mp3" type="audio/mp3">
+                    <source src="music/TrippieReddTheGrinch.mp3" type="audio/mp3">
+                    <source src="music/KendrickLamarNotLikeUs.mp3" type="audio/mp3">
+                    <source src="music/liluzivertsillywatch.mp3" type="audio/mp3">
+                </audio>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="notificationamnhac">
+        <div class="notificationamnhac-content">
+            <p>CHUC MOT NGAY TOT LANH :D </p>
+        </div>
+    </div>
+
+    <!--mouse -->
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <!--mouse -->
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

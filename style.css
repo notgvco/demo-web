@@ -1,0 +1,855 @@
+@import url(https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap);
+mn nm n * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    min-height: 100vh;
+    position: relative;
+    cursor: none;
+}
+
+#mainContent {
+    display: none;
+    text-align: center;
+}
+
+
+/* CSS hiện tại của bạn */
+
+#musicBox {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #000000;
+    border-color: #000000;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+#musicBox:hover {
+    width: 200px;
+    height: 60px;
+}
+
+#musicPlayer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+#musicIcon {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.5s linear;
+}
+
+.track-title {
+    color: #000000;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    display: none;
+}
+
+#musicBox:hover #musicIcon {
+    display: none;
+}
+
+#musicBox:hover .track-title {
+    display: block;
+    animation: marquee 10s linear infinite;
+}
+
+
+/* Thêm CSS cho hiệu ứng xoay tròn */
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/*hiệu ứng xoay tròn khi đang phát nhạc */
+
+#musicBox.playing #musicIcon {
+    animation: spin 2s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.music-animated {
+    position: absolute;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.musicBoxPart {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    visibility: hidden;
+    /* Tàng hình các phần */
+}
+
+
+/* animation cursor */
+
+.circle {
+    height: 15px;
+    width: 15px;
+    border-radius: 24px;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999999;
+    /* so that it stays on top of all other elements */
+}
+
+header {
+    position: fixed;
+    /* Đặt vị trí cố định để giữ logo ở đầu màn hình */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Chiếm toàn bộ chiều rộng của màn hình */
+    text-align: center;
+    /* Căn giữa nội dung trong phần tử header */
+    padding: 1px 0;
+    /* Khoảng cách phía trên và dưới logo */
+    background: transparent;
+    /* Không có nền */
+    border: none;
+    /* Loại bỏ border nếu có */
+    box-shadow: none;
+    /* Loại bỏ bóng nếu có */
+    z-index: 1000;
+    /* Đảm bảo header luôn nằm trên cùng */
+}
+
+
+/* Căn giữa logo và giữ tỷ lệ */
+
+.logo {
+    display: inline-block;
+    /* Đảm bảo phần tử chứa logo có kích thước tự động */
+}
+
+
+/* CSS cho phần biểu tượng âm thanh */
+
+.sound-control {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #000000;
+    border-color: #000000;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.sound-control:hover {
+    width: 60px;
+    height: 60px;
+}
+
+.sound-icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+#logo {
+    filter: invert(100%) brightness(200%)
+}
+
+.icons {
+    display: flex;
+    gap: 15px;
+    /* Khoảng cách giữa các biểu tượng */
+    position: fixed;
+    /* Đặt vị trí cố định */
+    top: 95px;
+    /* Khoảng cách từ trên cùng */
+    right: 25px;
+    /* Khoảng cách từ bên phải */
+    z-index: 1;
+    /* Đảm bảo icons luôn nằm trên cùng */
+}
+
+.icon {
+    width: 30px;
+    /* Kích thước của biểu tượng */
+    height: 30px;
+    /* Kích thước của biểu tượng */
+    cursor: pointer;
+    /* Hiệu ứng con trỏ chuột */
+    transition: opacity 0.5s ease;
+    /* Hiệu ứng chuyển đổi */
+}
+
+.icon:hover {
+    opacity: 0.7;
+    /* Thay đổi độ mờ khi di chuột vào biểu tượng */
+}
+
+.notification {
+    display: none;
+    /* Ẩn thông báo theo mặc định */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    /* Đặt độ ưu tiên cao hơn để nổi bật trên trang chính */
+}
+
+.notification-content {
+    background: rgba(102, 102, 102, 0.5);
+    /* Nền mờ với màu đen */
+    border-radius: 8px;
+    padding: 20px;
+    width: 450px;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(5px);
+    /* Làm mờ nền phía sau phần tử thông báo */
+}
+
+.notification-icons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.notification-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+}
+
+.notification-text {
+    margin: 10px 0;
+}
+
+.language-select {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.language-flag {
+    width: 30px;
+    height: 20px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.close-btn i {
+    font-size: 24px;
+}
+
+.language-display {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    /* Đặt độ ưu tiên thấp hơn so với thông báo */
+}
+
+.language-display .language-flag {
+    width: 50px;
+    height: 30px;
+    cursor: pointer;
+}
+
+
+/* Styles for the dropdown container */
+
+.dropdown {
+    position: fixed;
+    /* Đặt vị trí cố định */
+    top: 70px;
+    /* Căn lề từ trên cùng */
+    left: 15px;
+    /* Căn lề từ bên trái */
+    display: inline-block;
+    z-index: 1000;
+    /* Đảm bảo menu ở trên các phần tử khác */
+}
+
+
+/* Styles for the dropdown button */
+
+.dropbtn {
+    font-family: 'Bebas Neue';
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    /* Tăng padding để chữ to hơn và dễ bấm hơn */
+    font-size: 24px;
+    /* Tăng kích thước chữ */
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    /* Đảm bảo nó không chiếm toàn bộ chiều rộng */
+}
+
+
+/* Dropdown content (hidden by default) */
+
+.dropdown-content {
+    font-size: 20px;
+    font-family: 'Bebas Neue';
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    min-width: 160px;
+    z-index: 1000;
+    /* Đảm bảo menu ở trên các phần tử khác */
+    top: calc(100% + 5px);
+    /* Đưa menu xuống dưới nút và cách 5px */
+    left: 0;
+    /* Căn lề bên trái của menu với nút */
+}
+
+
+/* Links inside the dropdown */
+
+.dropdown-content a {
+    filter: invert(100%) brightness(70%);
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: transform 0.3s ease;
+    /* Transition for the transform effect */
+}
+
+
+/* Change color of links on hover */
+
+.dropdown-content a:hover {
+    background-color: transparent;
+    transform: translateY(-5px);
+    /* Move the item up */
+}
+
+
+/* Khu vực chính chứa sản phẩm */
+
+.container {
+    min-height: calc(100vh - 100px);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    /* Điều chỉnh kích thước theo nhu cầu */
+    max-width: 1200px;
+    /* Điều chỉnh kích thước tối đa */
+    margin-top: 100px;
+    margin: auto;
+    padding: 20px;
+}
+
+
+/* Lưới sản phẩm */
+
+.product-grid {
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+
+/* Định dạng cho sản phẩm */
+
+.product {
+    margin-top: 100px;
+    aspect-ratio: 1 / 1;
+    background-color: transparent;
+    border: 0;
+    border-radius: 15px;
+    overflow: visible;
+    /* Set overflow to visible */
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* Đảm bảo ảnh giữ tỉ lệ và lấp đầy khung */
+}
+
+
+/* Điều chỉnh kích thước của container hình ảnh */
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 100%;
+    /* Tạo tỷ lệ khung hình 1:1 */
+    overflow: hidden;
+    /* Ẩn phần tử ra ngoài */
+}
+
+
+/* Hình ảnh chính và ảnh hover */
+
+.main-image,
+.hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Giữ tỷ lệ và không làm dãn hình ảnh */
+    transition: opacity 0.3s ease;
+}
+
+
+/* Ảnh hover */
+
+.hover-image {
+    opacity: 0;
+    /* Ẩn ảnh phụ mặc định */
+    z-index: 2;
+    /* Đảm bảo ảnh hover nằm trên ảnh chính */
+}
+
+
+/* Hiệu ứng hover */
+
+.product:hover .hover-image {
+    opacity: 1;
+    /* Hiện ảnh phụ khi di chuột vào */
+}
+
+.product:hover .main-image {
+    opacity: 0;
+    /* Ẩn ảnh chính khi di chuột vào */
+}
+
+
+/* Thông tin sản phẩm */
+
+.product-info {
+    position: absolute;
+    bottom: 0;
+    /* Set the bottom property to 0 */
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+
+/* Tên sản phẩm */
+
+.product-name {
+    font-size: 14px;
+    color: #000000;
+    /* Đảm bảo chữ có thể đọc được trên nền tối */
+    margin: 0;
+    /* Đảm bảo tên sản phẩm không bị ngắt dòng */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Thêm dấu ba chấm nếu văn bản quá dài */
+}
+
+
+/* Giá sản phẩm */
+
+.product-price {
+    color: #000000;
+    font-size: 14px;
+    /* Kích thước chữ nhỏ hơn cho giá sản phẩm */
+    margin: 0;
+    font-weight: bold;
+    white-space: nowrap;
+    /* Đảm bảo giá không bị ngắt dòng */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Thêm dấu ba chấm nếu văn bản quá dài */
+}
+
+
+/* Thanh thông báo */
+
+.notificationamnhac {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    /* Điều chỉnh chiều cao của thanh thông báo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    /* Nền mờ với màu đen */
+    color: #ffffff;
+    z-index: 1000;
+    /* Đảm bảo thanh thông báo nằm dưới các phần tử khác */
+    overflow: hidden;
+}
+
+
+/* Nội dung thanh thông báo */
+
+.notificationamnhac-content {
+    font-family: 'VT323';
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 10px 20px;
+    width: auto;
+    white-space: nowrap;
+    /* Không cho phép dòng chữ xuống dòng */
+    position: relative;
+    overflow: hidden;
+    /* Ẩn phần chữ vượt ra ngoài */
+    width: 100%;
+    /* Chiếm toàn bộ chiều rộng của thanh thông báo */
+}
+
+
+/* Hiệu ứng chữ chạy */
+
+.notificationamnhac-content p {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 20s linear infinite;
+    /* Điều chỉnh thời gian và kiểu hoạt hình */
+    font-size: 16px;
+    /* Kích thước chữ của thanh thông báo */
+}
+
+
+/* Hiệu ứng chạy chữ */
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+/* Styles for larger screens (desktops and larger tablets) */
+
+@media (min-width: 1200px) {
+    .container {
+        width: 80vw;
+        max-width: 1200px;
+        margin-top: 100px;
+    }
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .header {
+        padding: 1px 0;
+    }
+    .icons {
+        top: 95px;
+        right: 30px;
+    }
+    .icon {
+        width: 30px;
+        height: 30px;
+    }
+    .dropdown-content {
+        font-size: 20px;
+    }
+    .dropdown .dropbtn {
+        font-size: 24px;
+        padding: 20px;
+    }
+    .notificationamnhac {
+        height: 40px;
+    }
+}
+
+
+/* Styles for tablets and small laptops */
+
+@media (max-width: 1199px) and (min-width: 768px) {
+    .container {
+        width: 90vw;
+        max-width: none;
+        margin-top: 100px;
+    }
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .icons {
+        top: 80px;
+        right: 20px;
+    }
+    .icon {
+        width: 25px;
+        height: 25px;
+    }
+    .dropdown-content {
+        font-size: 18px;
+    }
+    .dropdown .dropbtn {
+        font-size: 20px;
+        padding: 15px;
+    }
+    .notificationamnhac {
+        height: 35px;
+    }
+}
+
+
+/* Styles for mobile devices */
+
+@media (max-width: 767px) {
+    .container {
+        width: 100%;
+        max-width: none;
+        padding: 10px;
+        margin-top: 70px;
+    }
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    .icons {
+        top: 70px;
+        right: 10px;
+    }
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+    .dropdown-content {
+        font-size: 16px;
+    }
+    .dropdown .dropbtn {
+        font-size: 18px;
+        padding: 10px;
+    }
+    .notificationamnhac {
+        height: 30px;
+    }
+}
+
+
+/* The Modal (background) */
+
+.modal,
+.modal-cart {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+/* Modal Content with LED border effect */
+
+.modal-content,
+.modal-cart-content {
+    color: #000000;
+    background-color: #ffffff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 5px solid;
+    /* Thickness of border */
+    border-color: rgb(255, 0, 0);
+    /* Initial color for border */
+    animation: ledBorder 5s linear infinite;
+    /* LED border animation */
+    width: 80%;
+    max-width: 400px;
+    position: relative;
+    z-index: 100;
+    /* Ensure modal content is above the icons */
+}
+
+.modal-cart-content {
+    max-width: 300px;
+    margin: 0;
+    height: 100%;
+    right: 0;
+    top: 0;
+    position: fixed;
+    z-index: 100;
+    /* Ensure modal content is above the icons */
+}
+
+
+/* Keyframes for LED border effect */
+
+@keyframes ledBorder {
+    0% {
+        border-color: rgb(255, 0, 0);
+    }
+    /* Red */
+    14% {
+        border-color: rgb(255, 127, 0);
+    }
+    /* Orange */
+    28% {
+        border-color: rgb(255, 255, 0);
+    }
+    /* Yellow */
+    42% {
+        border-color: rgb(0, 255, 0);
+    }
+    /* Green */
+    57% {
+        border-color: rgb(0, 255, 255);
+    }
+    /* Cyan */
+    71% {
+        border-color: rgb(0, 0, 255);
+    }
+    /* Blue */
+    85% {
+        border-color: rgb(127, 0, 255);
+    }
+    /* Purple */
+    100% {
+        border-color: rgb(255, 0, 0);
+    }
+    /* Back to Red */
+}
+
+.close,
+.close-cart {
+    color: #ff0000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus,
+.close-cart:hover,
+.close-cart:focus {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* Style for the forms */
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-top: 10px;
+}
+
+form input {
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+form button {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+/* Cart items style */
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#checkout {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modal-cart-open .icons {
+    display: none;
+}
